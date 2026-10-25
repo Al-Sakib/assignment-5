@@ -47,4 +47,98 @@ if (themeBtn) {
   });
 }
 
+// ================= dashboard (index.html only) =================
+const completedEl = $("#completed-count");
+const assignedEl = $("#assigned-count");
+
+
+
+
+if (completedEl && assignedEl) {
+  let completed = parseInt(completedEl.textContent, 10); // 23
+  let assigned = $$(".complete-btn").length;             // 6
+  assignedEl.textContent = pad(assigned);
+
+
+
+
+  // date card
+  const now = new Date();
+  const dayName = now.toLocaleDateString("en-US", { weekday: "short" });
+  const rest = now.toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" }).replace(",", "");
+  $("#date-day").textContent = `${dayName} ,`;
+  $("#date-full").textContent = rest;
+
+
+
+
+  const logList = $("#log-list");
+
+
+
+
+  function addLog(title) {
+    const time = new Date().toLocaleTimeString("en-US");
+    const li = document.createElement("li");
+    li.innerHTML = `You have Complete The Task <b>${title}</b> at <span class="log-time">${time}</span>`;
+    logList.prepend(li);
+  }
+
+
+
+
+  $$(".complete-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".card");
+      const title = card.dataset.title;
+
+
+
+
+      // 1. warning notification
+      showToast(`<strong>Board updated</strong>Task “${title}” marked as completed.`);
+
+
+
+
+      // 2. Task Assigned  -1,  Completed counter +1 (23 -> 24 ... 29)
+      assigned -= 1;
+      completed += 1;
+      assignedEl.textContent = pad(assigned);
+      completedEl.textContent = completed;
+
+
+
+
+      // disable the button so one task can't be completed twice
+      btn.disabled = true;
+      btn.textContent = "Completed";
+      card.style.opacity = ".85";
+
+
+
+
+      // activity log
+      addLog(title);
+
+
+
+
+      if (assigned === 0) {
+        setTimeout(() => showToast("<strong>Congratulations!</strong>You have completed all the current tasks.", "success"), 400);
+      }
+    });
+  });
+
+
+
+
+  $("#clear-history").addEventListener("click", () => {
+    logList.innerHTML = "";
+  });
+}
+
+
+
+
 
