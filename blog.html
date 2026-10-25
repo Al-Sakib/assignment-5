@@ -1,92 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog | DevBoard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-  <div class="page">
-    <!-- Top bar (same as home) -->
-    <header class="topbar">
-      <a class="logo" href="index.html" aria-label="DevBoard home">
-        <span class="logo-mark"><span></span></span>
-        <span class="logo-text">Dev<b>Board</b></span>
-      </a>
-      <div class="topbar-right">
-        <div class="done-pill" title="Tasks completed">
-          <span class="check-box">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
-          </span>
-          <span>23</span>
-        </div>
-        <button id="theme-btn" class="theme-btn" type="button" aria-label="Change theme color" title="Change theme color"></button>
-      </div>
-    </header>
- 
-    <!-- Blog content below the top bar -->
-    <main class="blog">
-      <div class="blog-head">
-        <h1>Required Question to Answer at Blog.html</h1>
-        <a class="back-link" href="index.html">← Back to Board</a>
-      </div>
-      <p class="blog-sub">Short answers to common DOM questions.</p>
- 
-      <section class="qa">
-        <h2><span>Question-1:</span> What are the different ways to select an element in the DOM?</h2>
-        <ul>
-          <li><code>document.getElementById("id")</code> – returns the single element with that id.</li>
-          <li><code>document.getElementsByClassName("cls")</code> – returns a live <code>HTMLCollection</code>.</li>
-          <li><code>document.getElementsByTagName("div")</code> – returns a live <code>HTMLCollection</code> by tag.</li>
-          <li><code>document.querySelector(".cls")</code> – returns the first element matching any CSS selector.</li>
-          <li><code>document.querySelectorAll(".cls")</code> – returns a static <code>NodeList</code> of all matches.</li>
-          <li>Relative traversal: <code>parentElement</code>, <code>children</code>, <code>nextElementSibling</code>, <code>closest()</code>.</li>
-        </ul>
-      </section>
- 
-      <section class="qa">
-        <h2><span>Question-2:</span> What is the difference between innerHTML, innerText, and textContent?</h2>
-        <ul>
-          <li><code>innerHTML</code> – gets/sets the HTML markup inside an element. Tags in the string are parsed into elements (be careful with untrusted input – XSS risk).</li>
-          <li><code>innerText</code> – gets/sets the <em>rendered</em> text. It respects CSS (hidden elements are skipped) and triggers a reflow, so it is slower.</li>
-          <li><code>textContent</code> – gets/sets all the raw text of the node and its descendants, including hidden elements and <code>&lt;script&gt;</code> text. It is fast and does not parse HTML.</li>
-        </ul>
-      </section>
- 
-      <section class="qa">
-        <h2><span>Question-3:</span> What is event delegation in the DOM?</h2>
-        <p>Event delegation means attaching a single listener to a parent element instead of one on every child. Because events bubble up, the parent can catch events from its children and use <code>event.target</code> to find which child triggered it. It saves memory and also works for elements added later.</p>
-        <pre>document.querySelector(".cards").addEventListener("click", (e) => {
-  if (e.target.matches(".complete-btn")) {
-    console.log("Clicked:", e.target);
-  }
-});</pre>
-      </section>
- 
-      <section class="qa">
-        <h2><span>Question-4:</span> What is event bubbling in the DOM?</h2>
-        <p>Event bubbling is the way an event travels after it fires: it runs the handlers on the target element first, then moves up through each ancestor (parent, grandparent … <code>document</code>). You can stop it with <code>event.stopPropagation()</code>. The opposite direction (top-down) is the <em>capturing</em> phase, enabled with <code>addEventListener(type, fn, true)</code>.</p>
-      </section>
- 
-      <section class="qa">
-        <h2><span>Question-5:</span> How do you create, add, and remove elements using JavaScript?</h2>
-        <ul>
-          <li><b>Create:</b> <code>document.createElement("li")</code>, then set <code>textContent</code>, classes or attributes.</li>
-          <li><b>Add:</b> <code>parent.appendChild(el)</code>, <code>parent.append(el)</code>, <code>parent.prepend(el)</code>, <code>parent.insertBefore(el, ref)</code> or <code>el.insertAdjacentElement(pos, newEl)</code>.</li>
-          <li><b>Remove:</b> <code>el.remove()</code> or <code>parent.removeChild(el)</code>.</li>
-        </ul>
-        <pre>const li = document.createElement("li");
-li.textContent = "New task";
-document.querySelector("ul").appendChild(li);   // add
-li.remove();                                    // remove</pre>
-      </section>
-    </main>
-  </div>
- 
-  <script src="script.js"></script>
+  
 </body>
 </html>
